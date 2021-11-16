@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: black;
+
 }
 
 .App-logo {
@@ -38,13 +38,17 @@
   }
 }
 .movie{
-  display: flex;
-  flex-direction: row;
+ /* display: flex;
+  flex-direction: row;*/
   
   margin: 2rem;
   align-items: flex-end;
   align-items: center;
-  background-color: blanchedalmond;
+  background-color:rgb(14, 13, 13);
+  color: beige;
+}
+.movie:hover{
+  transform: scale(1.1);
 }
 img{
   /*border-radius: 50%;*/
@@ -54,11 +58,24 @@ img{
   margin: 1rem;
 }
 .info{
-  padding: 2em;
-  text-align: left;
+  display: flex;
+  flex-direction: row;
+   margin: 1rem;
 }
 h1{
 
   color: rgb(131, 64, 125);
   text-shadow: 2px 2px rgb(61, 21, 61);
+}
+.movielist{
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+nav{
+  font-size:24px;
+  display:flex;
+  justify-content: space-around;
+  margin:20px;
+  text-decoration: none;
 }
