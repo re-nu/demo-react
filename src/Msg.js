@@ -1,4 +1,4 @@
-import { useState,useEffect } from 'react';
+import { useState } from 'react';
 import { Count } from './Count';
 import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
@@ -40,7 +40,9 @@ export function Msg({ name, poster, rating, summary, id }) {
         aria-label="delete" color="secondary">
            <DeleteIcon />
          </IconButton>
-         <IconButton aria-label="edit" color="secondary">
+         <IconButton
+         onClick={()=>history.push("/edit-movie/"+id)} 
+          aria-label="edit" color="secondary">
            <EditIcon/>
          </IconButton>
          <button onClick={() => setshowb(!showb)}>{showb ? "hide" : "show"} summary</button>

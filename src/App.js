@@ -6,6 +6,8 @@ import { MovieList } from './MovieList';
 import { AddMovie } from './AddMovie';
 import { Welcome } from './Welcome';
 import { MovieDetails } from './MovieDetails';
+import { useHistory, useParams } from 'react-router';
+import TextField from '@mui/material/TextField';
 
 export default function App() {
  /* const Initial_Movies=[
@@ -49,8 +51,75 @@ export default function App() {
             <MovieDetails />
         </Route>                               
         <Route path="/color">color</Route>
+        <Route path="/edit-movie/:id"><Edit/></Route>
       </Switch>
     </div>
   );
 }
 
+function Edit(params) {
+  const{id}=useParams();
+  const history=useHistory();
+
+  const [movie,setmovie]=useState({});
+  async function getmovie() {
+    const data=await fetch(`https://6166c4e513aa1d00170a6713.mockapi.io/movies/${id}`);
+    const mv= await data.json();
+    setmovie(mv);
+  }
+  useEffect(getmovie)
+  return movie?<Update movie={movie}/>:" ";
+}
+
+function Update({movie}) {
+  const [name, setname] = useState("");
+  const [poster, setpic] = useState("");
+  const [rating, setrating] = useState("");
+  const [summary, setsummary] = useState("");
+  const [trailer, settrailer] = useState("");
+  const history=useHistory();
+
+  function editmovie(){
+    console.log("movie added");
+    const updateMovie = {
+      name,
+      poster,
+      rating,
+      summary,
+      trailer,
+    };
+    async function editM() {
+      const data=await fetch(
+        `https://6166c4e513aa1d00170a6713.mockapi.io/movies${movie.id}`,
+        {method:"POST",
+         body:JSON.stringify(updateMovie),
+         headers:{"Content-Type":"application/json",}
+      }
+        );
+        history.push("/movies");
+    }
+    editM();
+  };
+  return (
+    <div className="addMovie">
+      <input
+        value={movie.name}
+        onChange={(event) => setname(event.target.value)} />
+      <input
+        value={movie.poster}
+        onChange={(event) => setpic(event.target.value)} />
+      <input
+        value={movie.rating}
+        onChange={(event) => setrating(event.target.value)} />
+        <TextField 
+        value={movie.summary}
+        onChange={(event) => setsummary(event.target.value)}
+        id="standard-basic" label="Summary" variant="standard" />
+        <TextField 
+        value={movie.trailer}
+        onChange={(event) => settrailer(event.target.value)}
+        id="standard-basic" label="trailer" variant="standard" />
+      <button onClick={editmovie}>Update</button>
+    </div>
+  );
+}
