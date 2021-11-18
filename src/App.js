@@ -8,6 +8,7 @@ import { Welcome } from './Welcome';
 import { MovieDetails } from './MovieDetails';
 import { useHistory, useParams } from 'react-router';
 import TextField from '@mui/material/TextField';
+import {Form } from './Form.js';
 
 export default function App() {
  /* const Initial_Movies=[
@@ -36,6 +37,7 @@ export default function App() {
         <Link to="/add-movie">ADD MOvie</Link>
         <Link to="/movies">MOVIES</Link>
         <Link to="/color">COLOR </Link>
+        <Link to ="/form-validation">Form valadation</Link>
       </nav>
       <Switch>
         <Route exact path="/">
@@ -52,6 +54,7 @@ export default function App() {
         </Route>                               
         <Route path="/color">color</Route>
         <Route path="/edit-movie/:id"><Edit/></Route>
+        <Route path="/form-validation"><Form/></Route>
       </Switch>
     </div>
   );

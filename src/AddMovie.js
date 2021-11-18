@@ -33,18 +33,29 @@ export function AddMovie() {
   };
   return (
     <div className="addMovie">
-      <input
-        placeholder="name"
-        onChange={(event) => setname(event.target.value)} />
-      <input
-        placeholder="poster url"
-        onChange={(event) => setpic(event.target.value)} />
-      <input
-        placeholder="rating"
-        onChange={(event) => setrating(event.target.value)} />
+          <TextField 
+        onChange={(event) => setname(event.target.value)}
+        id="standard-basic"
+         label="Name"
+          variant="standard" />
+
+         <TextField 
+        onChange={(event) => setpic(event.target.value)}
+        id="standard-basic" 
+        label="Poster" 
+        variant="standard" />
+
+        <TextField 
+        onChange={(event) => setrating(event.target.value)}
+        id="standard-basic" 
+        label="ratting" 
+        variant="standard" />
+
         <TextField 
         onChange={(event) => setsummary(event.target.value)}
-        id="standard-basic" label="Summary" variant="standard" />
+        id="standard-basic" 
+        label="Summary" 
+        variant="standard" />
         <TextField 
         onChange={(event) => settrailer(event.target.value)}
         id="standard-basic" label="trailer" variant="standard" />
