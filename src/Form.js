@@ -15,12 +15,12 @@ import * as yup from "yup";
 const validform=yup.object({
   email:yup
   .string()
-  .min(5, "need min 5")
-  .requires,
+  .min(5, "email min 5")
+  .require,
 
   password:yup
   .string()
-  .min(8,"need min 6")
+  .min(8,"psw min 6")
   .max(12)
 })
 
